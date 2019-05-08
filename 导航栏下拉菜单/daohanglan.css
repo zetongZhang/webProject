@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	padding:0;
+	margin:0;
+}
+.cont{
+	margin:20px auto;
+	width:1190px;
+}
+.cont>ul{
+	width:1190px;
+	height:50px;
+	background:#777;
+	coor:#fff;
+}
+.cont>ul>li{
+	width:170px;
+	float:left;
+	line-height: 50px;
+	text-align: center;
+	list-style:none;
+	font-size: 20px;
+	position:relative;
+}
+.cont>ul>li:hover{
+	background:#fff;
+	color:rgb(28,178,156);
+}
+.cont>ul>li:hover ul li{
+	display:block;
+}
+.cont>ul>:first-child{
+	background:#eee;
+	color:rgb(28,178,156);
+}
+.cont>ul>li>ul{
+	list-style: none;
+	color:#000;
+	position:absolute;
+	top:50px;
+	left:0;
+}
+.cont>ul>li>ul>li{
+	width: 100px;
+	display:none;
+	padding:0 35px;
+	background:#fff;
+	clear:both;
+	color:#000;
+}
+.cont>ul>li>ul>li:hover{
+	background:#c0ff00;
+}
+div img{
+	width:1191px;
+}
+.gs{
+	width: 320px;
+	font-family: "微软雅黑";
+	color:bisque;
+	text-align: center;
+	font-size: 28px;
+	line-height: 55px;
+	position: relative;
+	top:-240px;
+	left:240px;
+}
