@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>水波按钮</title>
+<!--搬运https://github.com/YUUXIAO/webProject，略做修改-->
+</head>
+<link href="slide.css" rel="stylesheet" type="text/css">
+<body>
+<ul>
+  <li>Tab One</li>
+  <li>Tab Two</li>
+  <li>Tab Three</li>
+  <li class="slider"></li>
+</ul> 
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script>
+	$(function(){
+		$("ul li").hover(function(e) {
+		  if ($(this).hasClass('slider')) {
+			return;
+		  }
+		  var whatTab = $(this).index();
+		  var howFar = 163 * whatTab;
+		  howFar = howFar-8;
+		  $(".slider").css({
+			left: howFar + "px"
+		  });
+		  $(".ripple").remove();
+		  var posX = $(this).offset().left,
+			  posY = $(this).offset().top,
+			  buttonWidth = $(this).width(),
+			  buttonHeight = $(this).height();
+		  $(this).append("<span class='ripple'></span>");
+		  if (buttonWidth >= buttonHeight) {
+			buttonHeight = buttonWidth;
+		  } else {
+			buttonWidth = buttonHeight;
+		  }
+		  var x = e.pageX - posX - buttonWidth / 2;
+		  var y = e.pageY - posY - buttonHeight / 2;
+		  $(".ripple").css({
+			width: buttonWidth,
+			height: buttonHeight,
+			top: y + 'px',
+			left: x + 'px'
+		  }).addClass("rippleEffect");
+		}); 
+	});  
+</script>
+</body>
+</html>

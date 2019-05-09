@@ -1,0 +1,72 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	border:0;
+	padding:0;
+}
+ul {
+	width: 490px;
+	font-size: 0;
+	padding: 0;
+	position: relative;
+	margin: 100px auto;
+}
+li {
+	width: 160px;
+	height: 60px;
+	color: #fff;
+	background-color: #E95546;
+	font-size: 16px;
+	text-align: center;
+	line-height: 60px;
+	text-transform: uppercase;
+	position: relative;
+	margin-left:3px;
+	overflow: hidden;
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 3px;
+}     
+.slider {
+	width: 176px;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: -8px;
+	height: 5px;
+	background: #4FC2E5;
+	transition: all 0.6s;
+}     
+.ripple {
+	width: 0;
+	height: 0;
+	border-radius: 100%;
+	background: rgba(255, 255, 255, 0.3);
+	-webkit-transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
+	position: absolute;
+	opacity: 1;
+}
+
+.rippleEffect {
+  -webkit-animation: rippleDrop 0.5s linear;
+  animation: rippleDrop 0.5s linear;
+}
+
+@-webkit-keyframes 
+  rippleDrop {  100% {
+   -webkit-transform: scale(2);
+   transform: scale(2);
+   opacity: 1;
+  }
+}
+@keyframes 
+  rippleDrop {  100% {
+   -webkit-transform: scale(2);
+   transform: scale(2);
+   opacity: 1;
+  }
+}    
+
