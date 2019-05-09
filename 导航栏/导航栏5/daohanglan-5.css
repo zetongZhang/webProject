@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+*{ 
+	margin: 0; 
+	padding: 0; 
+}
+body{ 
+	background: #f2f2f2; 
+	font-family: "微软雅黑";
+}
+ul{ 
+	width: 200px; 
+	margin: 50px auto; 
+	list-style: none; 
+	background: #fff; 
+}
+li{ 
+	width: 50px; 
+	height: 50px; 
+	position: relative; 
+	background: #aaa; 
+	font-size: 22px;
+	line-height: 50px;
+	color:#fff;
+	text-align: left;
+	text-indent:1em;
+	cursor: pointer;
+}
+ul li:hover{ 
+	width: 200px; 
+	transition:all ease 0.2s;
+}
+a{ 
+	text-decoration: none; 
+	text-align: center; 
+	color: #333; 
+	display: block; 
+	width: 150px; 
+	line-height: 50px; 
+	position: absolute; 
+	left: 50px; top: 0; 
+	text-indent: 0;
+}
+a:hover{ 
+	color: #fff; 
+}
+li:nth-child(1){ 
+	background:#B3C833; 
+}
+li:nth-child(2){ 
+	background:#CE5043; 
+}
+li:nth-child(3){ 
+	background:#FB8521; 
+}
+li:nth-child(4){ 
+	background:#1AA1E1; 
+}
+li:nth-child(5){
+	background:#5E5CA6; 
+}
+li:nth-child(6){
+	background:#658092; 
+}
