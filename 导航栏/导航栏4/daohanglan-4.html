@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>旋转菜单栏</title>
+<link href="daohanglan-4.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="menu">
+	<div id="list">
+		<img src="clos.png">
+		<img src="full.png">
+		<img src="open.png">
+		<img src="prev.png">
+		<img src="refresh.png">
+	</div>
+	<div id="home"></div>
+</div>
+</body>
+<script>
+	window.onload=function(){		
+		var hom=document.getElementById("home");
+		var imgs=document.getElementById("list").getElementsByTagName("img");		
+		var onOff=true;
+		var r=150;		
+		for( var i=0;i<imgs.length;i++ ){		
+			imgs[i].onclick=function(){		
+				this.style.WebkitTransform="rotate(-720deg)";
+				this.style.transition=0.5+"s";
+				this.style.left=0+"px";
+				this.style.top=0+"px";
+				this.style.WebkitTransform="rotate(0deg)";	
+				onOff=true;
+			};
+		}	
+		
+		hom.onclick=function(){
+			if( onOff ){
+				this.style.WebkitTransform="rotate(-720deg)";
+				for( var i=0;i<imgs.length;i++ ){
+					var olt=toLT(r,180/4*i);
+					imgs[i].style.transition=0.3+i*0.1+"s";
+					imgs[i].style.left=-olt.l+"px";
+					imgs[i].style.top=-olt.t+"px";
+					imgs[i].style.WebkitTransform="rotate(-720deg)";
+				}
+			}else{
+				this.style.WebkitTransform="rotate(720deg)";
+				for( var i=0;i<imgs.length;i++ ){	
+					imgs[i].style.transition=0.3+(imgs.length-1-i)*0.1+"s";
+					imgs[i].style.left=0+"px";
+					imgs[i].style.top=0+"px";
+					imgs[i].style.WebkitTransform="rotate(0deg)";
+				}
+			}
+			onOff=!onOff;	
+		}
+		
+		function toLT( iR,iDeg ){
+			return { l:Math.round(Math.sin(iDeg/180*Math.PI)*iR),t:Math.round(Math.cos(iDeg/180*Math.PI)*iR)}
+		}
+	} 
+</script>
+</html>
