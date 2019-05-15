@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>滚动页面显示悬浮导航</title>
+<!--搬运https://github.com/YUUXIAO/webProject，稍作修改-->
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	header{ 
+		height: 200px;
+		background: #f2f2f2; 
+		font-weight: bold; 
+		text-align: center; 
+		line-height: 200px; 
+	}
+	#nav{ 
+		width: 100%; 
+		height: 50px; 
+		background: #333; 
+	}
+	#nav ul{ 
+		width: 800px;
+		margin: 0 auto; 
+	}
+	#nav li{ 
+		width: 200px;
+		list-style: none;  
+		float: left; 
+		text-align: center;
+	}
+	#nav li span{ 
+		font-size: 20px; 
+		height: 50px; 
+		color: #fff; 
+		padding: 0 30px; 
+		line-height: 50px; 
+		text-decoration: none; 
+		display: inline-block; 
+		cursor: pointer;
+	}
+	#nav li span:hover{ 
+		background: #666; 
+	}	
+	#body div h1{
+		height: 600px; 
+		font-weight: bold; 
+		text-align: center; 
+		line-height: 400px;
+	}
+	#cloths{
+		background: #bbb; 
+	}
+	#shoes{
+		background: #aaa;  
+	}
+	#toys{
+		background: #999;
+	}
+	#foods{
+		background: #888;
+	}	
+	.fixed{ 
+		position: fixed; 
+		top: 0; 
+		left: 0; 
+		animation-name: show;
+		animation-duration: 0.5s; 
+	}
+	
+	@keyframes show{
+		from{ 
+			top: -50px; 
+		}
+		to{ 
+			top: 0; 
+		}
+	}	
+</style>
+</head>
+
+<body>
+<header><h1>header</h1></header>
+<div id="nav">
+	<ul>
+		<li><span onClick="gotozero(this)">cloths</span></li>
+		<li><span onClick="gotozero(this)">shoes</span></li>
+		<li><span onClick="gotozero(this)">toys</span></li>
+		<li><span onClick="gotozero(this)">foods</span></li>		
+	</ul>
+</div>
+<div id="body">
+	<div id="cloths"><h1>cloths</h1></div>
+	<div id="shoes"><h1>shoes</h1></div>
+	<div id="toys"><h1>toys</h1></div>
+	<div id="foods"><h1>foods</h1></div>		
+</div>
+</body>
+<script>
+	window.onload = function(){
+		var nav = document.getElementById("nav");
+		var shoes = document.getElementById("cloths");
+		scrollMenu( nav,shoes );	
+	}
+
+	function gotozero(obj){
+		var cnt = 0;
+		var isObj = true;
+		mobj=document.getElementById(obj.innerHTML);
+		if(!isObj){
+			clearInterval(timer);
+		}
+		isObj = false;			
+		timer = setInterval( function(){
+			cnt++;
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			var speed = Math.floor(-(scrollTop-mobj.offsetTop)/6);
+			document.documentElement.scrollTop = document.body.scrollTop = scrollTop + speed;
+			isObj =true;
+			if(Math.abs(scrollTop-mobj.offsetTop)<5 || cnt>10){
+				cnt=0;
+				clearInterval(timer);
+			}
+		},50 );
+	}
+	function scrollMenu( obj,target ){
+		window.onscroll = function(){
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			var top = target.offsetTop+50;
+			//当滚动高度大于目标元素的位置，导航条显示
+			if( scrollTop>=top ){
+				obj.className = "fixed";
+			}else{
+				obj.className = "";
+			}
+		}
+	}
+</script>
+</html>
